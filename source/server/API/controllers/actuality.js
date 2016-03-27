@@ -1,16 +1,38 @@
 /**
  * Created by sylflo on 3/27/16.
  */
-var Users = require('../models/users');
+//var Users = require('../models/users');
+var Recipes  = require('../models/recipes');
 
-
+//Penser a classe du plus recent au plus ancien
 exports.getActuality = function (req, res) {
 
-    //Need to find the recipe associated to the user follow
     console.log("current user = ", req.user);
-    // Users.find({});
+    var recipe_list = [];
 
-    return (res.status(200).json({message: 'Getting actualiity'}));
+
+    for (var i = 0; i < req.user.follow.length; i++) {
+        console.log("user that follows me ", req.user.follow[i].id_person);
+
+        Recipes.find({author_id: req.user.follow[i].id_person}, function(err, recipe) {
+
+            if (err) {
+                return (res.status(200).json({message: 'error when getting recipes user following'}));
+            }
+
+            else {
+                console.log("REcipe = ", recipe);
+                recipe_list.push(recipe);
+            }
+
+        });
+    }
+
+
+
+
+    return  res.status(200).json({message: 'Getting actualiity'});
+    //return (res.status(200).json({message: 'Getting actualiity'}));
     //Need to find the recpie like by the group the user followed
 
 };

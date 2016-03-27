@@ -32,8 +32,8 @@ var verifyJwt = expressJwt({
 
 /* Endpoint for actuality */
 router.route('/actuality')
-    .get(actualityController.getActuality);
-    //.get(verifyJwt, actualityController.getActuality);
+   // .get(actualityController.getActuality);
+    .get(verifyJwt, actualityController.getActuality);
 
 /* Enpoint for verification */
 router.route('/users/verify-email/:token')
