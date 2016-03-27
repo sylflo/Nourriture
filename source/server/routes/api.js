@@ -11,7 +11,8 @@ var recipesController = require('../API/controllers/recipes');
 var allergiesController = require('../API/controllers/allergies');
 var tagsController = require('../API/controllers/tags');
 var uploadsController = require('../API/controllers/uploads');
-var jwt = require('jsonwebtoken')
+var actualityController = require('../API/controllers/actuality');
+var jwt = require('jsonwebtoken');
 var passport = require('passport');
 var searchController = require('../API/controllers/search');
 var express = require('express');
@@ -29,6 +30,11 @@ var verifyJwt = expressJwt({
 });
 
 
+/* Endpoint for actuality */
+router.route('/actuality')
+    .get(actualityController.getActuality);
+    //.get(verifyJwt, actualityController.getActuality);
+
 /* Enpoint for verification */
 router.route('/users/verify-email/:token')
     .get(userController.verifyEmail);
@@ -39,7 +45,7 @@ router.route('/users/sign-in')
     .post(userController.signinUser);
 
 router.route('/users')
-    .get(userController.getUsers)
+    .get(userController.getUsers);
 
 router.route('/users/id/:id')
     .put(userController.putUserById)
@@ -203,7 +209,7 @@ router.route('/search/groups/')
 router.route('/tags/id/:id')
     .put(tagsController.putTagsById)
     .delete(tagsController.deleteTagsById)
-    .get(tagsController.getTagById)
+    .get(tagsController.getTagById);
 
 // endpoints by name
 router.route('/tags/name/:name')

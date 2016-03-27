@@ -257,7 +257,7 @@ exports.getAllAllergies = function(req, res) {
 			if (err)
 				return (res.send(err));
 			else if (docs.length <= 0)
-				return (res.status(404).json({message : 'There are no existing allergies.'}))
+				return (res.status(404).json({message : 'There are no existing allergies.'}));
 			return (res.json(docs));
 		}
 	);
