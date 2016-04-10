@@ -22,9 +22,14 @@ function CreateGroupController($scope, GroupService, UserService, TagsService, t
 
 	vm.submit = function() {
 		$log.log("innit");
-		GroupService
+    $log.log("innnnit = ", $localStorage);
+    $log.log("innnnit = ", $sessionStorage);
+
+    GroupService
 			.groups
-			.save({"name" : $scope.name, "description" : $scope.description, "admin_id": $localStorage.user_id || $sessionStorage.user_id , "tags" : vm.tags_group})
+			.save({"name" : $scope.name, "description" : $scope.description, "admin_id": $localStorage.user_id || $sessionStorage.user_id ,
+        "username": $localStorage.name || $sessionStorage.name,
+        "tags" : vm.tags_group})
 			.$promise
 			.then(vm.GroupCreateSuccess, vm.GroupCreateFailure);
 	};

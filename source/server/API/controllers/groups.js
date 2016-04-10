@@ -131,7 +131,7 @@ exports.postGroup = function (req, res) {
 	var group = new Groups({
 		name : req.body.name,
 		description : req.body.description,
-		users : [{user_id: req.body.admin_id, access: {name : "Admin", level: 0} }],
+		users : [{user_id: req.body.admin_id, username: req.body.username, access: {name : "Admin", level: 0} }],
 		tags : req.body.tags
 	});
 
