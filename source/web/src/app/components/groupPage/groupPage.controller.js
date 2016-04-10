@@ -37,7 +37,6 @@
     };
 
     vm.ErrorDeleteGroup = function () {
-      $log.log(data.data);
       var errorMsg = "Error deleting group";
       toastr.error(errorMsg, 'Woops...');
     };
