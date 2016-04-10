@@ -118,6 +118,20 @@ var UserSchema = new mongoose.Schema({
             required: true
         }
     }],
+
+    recipe_like: [{
+        id_recipe: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'Recipes'
+        },
+        name_recipe: {
+            type: String,
+            required: true
+        }
+    }],
+
+
     follow: [{
         id_person: {
             type: mongoose.Schema.Types.ObjectId,
