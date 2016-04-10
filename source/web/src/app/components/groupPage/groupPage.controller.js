@@ -14,11 +14,13 @@
       vm.group = data;
       vm.userIsIn = 0;
       vm.userIsOwner = 0;
+      vm.list_admin = [];
       for (var i = 0; i != data.users.length; i++) {
         if (data.users[i].user_id === ($localStorage.user_id || $sessionStorage.user_id)) {
           vm.userIsIn = 1;
           if (data.users[i].access.name === "Admin")
             vm.userIsOwner = 1;
+            vm.list_admin.push(data.users[i].username);
         }
       }
     };
@@ -31,6 +33,7 @@
 
     vm.SuccessDeleteGroup = function () {
       toastr.success('Group successfully deleted');
+      $state.go('main.groups-dashboard');
     };
 
     vm.ErrorDeleteGroup = function () {

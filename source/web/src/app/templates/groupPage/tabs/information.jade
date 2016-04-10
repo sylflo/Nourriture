@@ -4,6 +4,11 @@ div(layout="column" layout-align="center center" layout-fill )
         md-button.md-raised.md-primary(ng-if='groupPage.userIsIn == 0' ng-click='groupPage.registerUser()') Subscribe
         md-button.md-raised.md-primary(ng-if='groupPage.userIsIn == 1 && groupPage.userIsOwner == 0' ng-click='groupPage.unregisterUser()') Unsubscribe
         md-list(flex)
+          md-list-item.md-3-line.md-no-proxy
+            .md-list-item-text
+              p Admin: <span class='bold' ng-repeat='admin in groupPage.list_admin'>{{admin}},</span>
+            md-divider
+        md-list(flex)
             md-list-item.md-3-line.md-no-proxy
                 .md-list-item-text
                     p <span class='bold'>Description:</span> {{groupPage.group.description}}
