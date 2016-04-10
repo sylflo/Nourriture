@@ -38,8 +38,8 @@ function CreateRecipeController($scope, RecipeService, TagsService, toastr, $log
 
 	vm.upload = function(file) {
 		$log.log("in upload");
-		/*UploadService.recipe_thumbnail_url(file)
-		.then(vm.RecipeThumbnailUploadSuccess, vm.RecipeThumbnailUploadFailure)*/
+		UploadService.recipe_thumbnail_url(file)
+		.then(vm.RecipeThumbnailUploadSuccess, vm.RecipeThumbnailUploadFailure)
 	}
 
 	vm.sendToBack = function() {

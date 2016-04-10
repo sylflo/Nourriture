@@ -21,15 +21,11 @@ exports.getActuality = function (req, res) {
 
             else {
                 recipe_list.push(recipe);
-                console.log("REcipe list = ", recipe_list);
                 return  res.status(200).json({message: 'Getting actualiity', recipe_list: recipe_list});
             }
         });
 
     }
-
-
-
 
 
     //return (res.status(200).json({message: 'Getting actualiity'}));

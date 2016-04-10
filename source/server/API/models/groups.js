@@ -15,6 +15,10 @@ var groupsSchema = new mongoose.Schema({
 			required : true,
 			ref : 'User'
 		},
+		username: {
+			type: String,
+			required: true
+		},
 		access : {
 			name : {
 				type : String,
