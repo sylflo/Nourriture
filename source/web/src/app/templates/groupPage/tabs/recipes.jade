@@ -1,1 +1,26 @@
-p Recipes
+p
+  | Recipes <br>
+  | <span ng-repeat='recipe in groupPage.recipe_like track by $index'>
+  | <a href='recipe/{{recipe.id_recipe}}'> {{recipe.name_recipe}}, </a>
+  |</span>
+
+//md-content.body-dashboard-recipe-md-content.flex.ng-cloak
+  section(layout="column" layout-align="start center" flex ng-if="groupPage.retrievingRecipes")
+    md-progress-circular(md-mode="indeterminate")
+  md-grid-list(md-cols-gt-md="6", md-cols-md='3', md-cols-sm='2', md-gutter='12px', md-row-height='1:1' ng-if="!groupPage.retrievingRecipes")
+    md-grid-tile.body-dashboard-recipe-grid-tile(ng-click="groupPage.goToRecipePage(recipe);" ng-mouseenter="recipe.mouseEnter = true" ng-mouseleave="recipe.mouseEnter = false" ng-repeat="recipe in groupPage.recipe_like")
+      figure
+        img(ng-src="{{ recipe.pictures[0].thumbnail_url }}" width="100%" height="100%")
+      md-grid-tile-footer.body-dashboard-recipe-grid-tile-footer
+        span(ng-if="!recipe.mouseEnter").show-on-enter
+          h2 {{ recipe.title  | limitTo: 12 }}
+        span(ng-if="recipe.mouseEnter").show-on-enter
+          h2 {{ recipe.title }}
+          p(style="text-align: center;") Author : {{ recipe.author_name }}
+          p(style="text-align: center")
+            span {{ recipe.average_score }}
+            ng-md-icon(icon="star")
+            span ({{ recipe.number_vote }})
+          p(style="text-align: center")
+            span(ng-repeat="storm in groupPage.range(recipe.difficulty) track by $index")
+              ng-md-icon(icon="storm")

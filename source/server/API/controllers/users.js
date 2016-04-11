@@ -623,7 +623,8 @@ exports.putUserByUsername = function (req, res) {
 
 exports.updateUserAll = function (req, res, err, user) {
 
-    var fields = ["id", "email", "description", "alergy", "religion", "pictures", "joined_groups", "password", "gender", "like", "dislike", "follow"];
+    var fields = ["id", "email", "description", "alergy", "religion", "pictures", "joined_groups", "password", "gender", "like", "dislike",
+        "recipe_like", "follow"];
     var sent_fields = Object.keys(req.body);
 
 
