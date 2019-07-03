@@ -2,10 +2,13 @@
   "name": "web",
   "version": "0.0.0",
   "dependencies": {
-    "gulp-ng-constant": "^1.1.0"
+    "gulp-ng-constant": "^1.1.0",
+    "snyk": "^1.189.0"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
     "estraverse": "~4.1.0",
@@ -55,5 +58,6 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  }
+  },
+  "snyk": true
 }
